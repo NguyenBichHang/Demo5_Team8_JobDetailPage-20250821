@@ -158,6 +158,15 @@ public class DetailJobPage {
     @FindBy(xpath ="//div[contains(text(), 'There is no results')")
     private WebElement noResultMessage;
 
+    @FindBy(xpath = "//div[@class='reviewer-avatar col-2']")
+    private WebElement commentAvatar;
+
+    @FindBy(css = "img[class='country-flag']")
+    private WebElement flag;
+
+    @FindBy(xpath = "//div[@class='ms-2 country-name']")
+    private WebElement countryName;
+
     @FindBy(xpath = "//div[text()='Helpful?']")
     private List<WebElement> helpfulText;
 
@@ -171,6 +180,12 @@ public class DetailJobPage {
     //  ***Locator phần comment***
     @FindBy(xpath ="//li[@class='row py-4']")
     private List<WebElement> commentItem;
+//    private By avatar      = By.cssSelector("img[alt='user avatar']");
+//    private By rating      = By.cssSelector(".fa-star");
+//    private By countryFlag = By.cssSelector("img[src*='switzerland']");
+//    private By countryName = By.xpath(".//span[contains(text(),'Switzerland')]");
+//    private By content     = By.xpath(".//p");
+//    private By helpful     = By.xpath(".//div[contains(text(),'Helpful?')]");
 
 //    @FindBy(css = ".ant-rate-star")
 //    private List<WebElement> commentStars;
@@ -424,8 +439,7 @@ public class DetailJobPage {
     }
 
     public int getAllReviewsCount() {
-        List<WebElement> allReviews = driver.findElements(
-                org.openqa.selenium.By.xpath("//div[contains(@class, 'comment')]")
+        List<WebElement> allReviews = driver.findElements(By.xpath("//div[contains(@class, 'comment')]")
         );
         return allReviews.size();
     }
@@ -477,6 +491,15 @@ public class DetailJobPage {
         Assert.assertTrue(reviewCount > 0,
                 "All reviews should be displayed when search is empty");
     }
+    //    ****Comment List****
+//    public void verifyCommentListDisplay(){
+//        Assert.assertTrue(commentItem.size() > 0,
+//                "Không có comment nào hiển thị!");
+//        for (WebElement comment : commentItem) {
+////            Assert.assertTrue(avatar.isDisplayed(), "Avatar không hiển thị!");
+//
+//        }
+//    }
 
     //    ****Comment****
     //div[@class='FAQ mt-5']//li[1]//*[name()='svg']

@@ -209,10 +209,20 @@ public class CommentTest extends NotLoggedInBaseTest {
     public void testCommentWithRatingStar() {
         DetailJobPage detailJobPage = new DetailJobPage(driver);
         detailJobPage.inputComment("test");
-        detailJobPage.selectRating(4);
+        detailJobPage.hoverStar(4);
         detailJobPage.verifyHoverStartsHightlight();
+        detailJobPage.selectRating(4);
         detailJobPage.clickCommentButton();
         detailJobPage.verifySelectedStar(4);
+        detailJobPage.verifyLatestCommentText("test");
+    }
+
+    @Test
+    public void testCommentWithoutRatingStar() {
+        DetailJobPage detailJobPage = new DetailJobPage(driver);
+        detailJobPage.inputComment("test");
+        detailJobPage.clickCommentButton();
+        detailJobPage.verifySelectedStar(5);
         detailJobPage.verifyLatestCommentText("test");
     }
 }
