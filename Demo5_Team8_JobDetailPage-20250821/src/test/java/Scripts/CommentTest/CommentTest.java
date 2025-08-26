@@ -184,6 +184,19 @@ public class CommentTest extends NotLoggedInBaseTest {
         detailJobPage.verifyAnswerHiddenWhenClosing();
     }
 
+    //    Test Comment List
+    @Test
+    public void testCommentList_WhenCommentsExist() {
+        DetailJobPage detailJobPage = new DetailJobPage(driver);
+        detailJobPage.verifyCommentListDisplay();
+    }
+
+    @Test
+    public void testCommentList_WhenNoComment() {
+        DetailJobPage detailJobPage = new DetailJobPage(driver);
+        detailJobPage.verifyNoCommentDisplayedWithMessage();
+    }
+
     //    Test Comment Section
     @Test
     public void testDefaultValue() {

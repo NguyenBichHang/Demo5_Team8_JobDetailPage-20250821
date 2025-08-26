@@ -155,17 +155,26 @@ public class DetailJobPage {
     @FindBy(xpath ="//div[contains(@class, 'comment')")
     private WebElement allComments;
 
-    @FindBy(xpath ="//div[contains(text(), 'There is no results')")
+    @FindBy(xpath ="//div[contains(text(), 'There is no comments')")
     private WebElement noResultMessage;
 
     @FindBy(xpath = "//div[@class='reviewer-avatar col-2']")
-    private WebElement commentAvatar;
+    private List<WebElement> commentAvatar;
 
     @FindBy(css = "img[class='country-flag']")
-    private WebElement flag;
+    private List<WebElement> flags;
 
     @FindBy(xpath = "//div[@class='ms-2 country-name']")
-    private WebElement countryName;
+    private List<WebElement> countryNames;
+
+    @FindBy(xpath = "//span[@class='star']")
+    private List<WebElement> stars;
+
+    @FindBy(xpath = "//span[@class='star-score']")
+    private List<WebElement> starScore;
+
+    @FindBy(xpath = "//li[@class='row py-4']//p")
+    private List<WebElement> contents;
 
     @FindBy(xpath = "//div[text()='Helpful?']")
     private List<WebElement> helpfulText;
@@ -492,14 +501,28 @@ public class DetailJobPage {
                 "All reviews should be displayed when search is empty");
     }
     //    ****Comment List****
-//    public void verifyCommentListDisplay(){
-//        Assert.assertTrue(commentItem.size() > 0,
-//                "Không có comment nào hiển thị!");
-//        for (WebElement comment : commentItem) {
-////            Assert.assertTrue(avatar.isDisplayed(), "Avatar không hiển thị!");
-//
-//        }
-//    }
+    public void verifyCommentListDisplay(){
+        Assert.assertTrue(commentItem.size() > 0,
+                "Không có comment nào hiển thị!");
+        for (int i = 0; i < commentItem.size(); i++) {
+            Assert.assertTrue(commentAvatar.get(i).isDisplayed(), "Avatar không hiển thị ở comment " + i);
+            Assert.assertTrue(flags.get(i).isDisplayed(), "Quốc kỳ không hiển thị ở comment " + i);
+            Assert.assertTrue(countryNames.get(i).isDisplayed(), "Tên quốc gia không hiển thị ở comment " + i);
+            Assert.assertTrue(stars.get(i).isDisplayed(), "Icon Star không hiển thị ở comment " + i);
+            Assert.assertFalse(starScore.get(i).getText().trim().isEmpty(), "Số sao không hiển thị ở comment " + i);
+            Assert.assertFalse(contents.get(i).getText().trim().isEmpty(), "Nội dung trống ở comment " + i);
+            Assert.assertTrue(helpfulText.get(i).isDisplayed(), "Helpful không hiển thị ở comment " + i);
+            Assert.assertTrue(yesButton.get(i).isDisplayed(), "Yes Button không hiển thị ở comment " + i);
+            Assert.assertTrue(noButton.get(i).isDisplayed(), "No Button không hiển thị ở comment " + i);
+        }
+    }
+
+    public void verifyNoCommentDisplayedWithMessage() {
+        Assert.assertEquals(commentItem.size(), 0, "Vẫn còn comment hiển thị, mong muốn = 0!");
+        Assert.assertTrue(noResultMessage.isDisplayed(), "Message 'There is no comments' không hiển thị!");
+        Assert.assertEquals(noResultMessage.getText().trim(), "There is no comments",
+                "Nội dung message không đúng!");
+    }
 
     //    ****Comment****
     //div[@class='FAQ mt-5']//li[1]//*[name()='svg']
