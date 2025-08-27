@@ -62,7 +62,7 @@ public class DetailJobPage {
     @FindBy(xpath ="//button[contains(text(),'Premium')]")
     private WebElement tabPremium;
 
-    @FindBy(xpath ="//button[@class='submit']")
+    @FindBy(xpath ="//button[@class='submit' and @type='button']")
     private WebElement continueButton;
 
     @FindBy(xpath ="//a[@class='compare']")
@@ -282,6 +282,8 @@ public class DetailJobPage {
 
     //    ****Package****
     public void clickTabBasic(){
+        Assert.assertTrue(tabBasic.isDisplayed(),
+                "Tab Basic should be visible");
         tabBasic.click();
     }
 
@@ -291,6 +293,10 @@ public class DetailJobPage {
 
     public void clickTabPremium(){
         tabPremium.click();
+    }
+
+    public void clickContinueButton(){
+        continueButton.click();
     }
 
     public void verifyContinueButtonNotLoggedIn(){

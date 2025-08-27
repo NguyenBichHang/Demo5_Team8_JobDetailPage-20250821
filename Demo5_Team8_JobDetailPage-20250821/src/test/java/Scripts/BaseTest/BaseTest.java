@@ -2,6 +2,7 @@ package Scripts.BaseTest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
@@ -22,6 +23,8 @@ public class BaseTest {
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
         driver.manage().window().maximize();
+//        Dimension smartphoneSize = new Dimension(375, 812);
+//        driver.manage().window().setSize(smartphoneSize);
         driver.get("https://demo5.cybersoft.edu.vn/");
         log.info("Da truy cap thanh cong");
     }
