@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.List;
 
 public class DetailJobPage {
@@ -23,8 +24,8 @@ public class DetailJobPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    //  ******
-    //  ***Locator phần Navigation***
+    //  *****
+    //  *****Locator - Navigation*****
     @FindBy(xpath ="//a[contains(text(),'Graphics & Design')]")
     private WebElement navigation1;
 
@@ -34,8 +35,8 @@ public class DetailJobPage {
     @FindBy(xpath ="//a[contains(text(),'Logo Desgin')]")
     private WebElement navigation3;
 
-    //  ******
-    //  ***Locator phần Job Description***
+    //  *****
+    //  *****Locator - Job Description*****
     @FindBy(xpath ="//h1[@class='job-title']")
     private WebElement jobTitle;
 
@@ -51,8 +52,8 @@ public class DetailJobPage {
     @FindBy(xpath ="//img[@class='img-fluid w-100']")
     private WebElement jobImage;
 
-    //  ******
-    //  ***Locator phần Package***
+    //  *****
+    //  *****Locator - Package*****
     @FindBy(xpath ="//button[contains(text(),'Basic')]")
     private WebElement tabBasic;
 
@@ -77,8 +78,8 @@ public class DetailJobPage {
     @FindBy(xpath ="//*[name()='path' and contains(@d,'M12 0a12 1')]")
     private WebElement continueAlertIcon;
 
-    //  ******
-    //  ***Locator phần About The Seller***
+    //  *****
+    //  *****Locator - About The Seller*****
     @FindBy(xpath ="(//div[@class='rating'])[2]")
     private WebElement ratingCount2;
 
@@ -91,8 +92,8 @@ public class DetailJobPage {
     @FindBy(css = ".contact-modal")
     private WebElement contactModal;
 
-    //  ******
-    //  ***Locator FAQ***
+    //  *****
+    //  *****Locator - FAQ*****
     @FindBy(xpath ="(//div[@class='FAQ mt-5']")
     private WebElement faqSection;
 
@@ -135,8 +136,8 @@ public class DetailJobPage {
     @FindBy(xpath ="//div[@class='FAQ mt-5']//li[4]//*[name()='svg']")
     private WebElement arrowButton4;
 
-    //  ******
-    //  ***Locator textbox search***
+    //  *****
+    //  *****Locator - textbox search*****
     @FindBy(xpath ="//input[@type='text']")
     private WebElement textboxSearch;
 
@@ -185,8 +186,8 @@ public class DetailJobPage {
     @FindBy(xpath = "//div[contains(@class, 'no d-flex align-items-center gap-1')]")
     private List<WebElement> noButton;
 
-    //  ******
-    //  ***Locator phần comment***
+    //  *****
+    //  *****Locator - Comment List*****
     @FindBy(xpath ="//li[@class='row py-4']")
     private List<WebElement> commentItem;
 //    private By avatar      = By.cssSelector("img[alt='user avatar']");
@@ -199,7 +200,9 @@ public class DetailJobPage {
 //    @FindBy(css = ".ant-rate-star")
 //    private List<WebElement> commentStars;
 
-    @FindBy(xpath ="//div[contains(text(),'Leave some comments')]")
+//  *****
+//  *****Locator - Comment Textarea*****
+    @FindBy(xpath ="//h2[contains(text(),'Leave some comments')]")
     private WebElement commentTitle;
 
     @FindBy(xpath ="//textarea[@name='noiDung']")
@@ -214,7 +217,8 @@ public class DetailJobPage {
     @FindBy(css = ".ant-rate .ant-rate-star div[role='radio'][aria-checked='true']")
     private WebElement selectedStar;
 
-//    ****Navigation****
+//  *****
+//  *****Methods - Navigation*****
     public void verifyNavigationLinkDisplayed(){
         Assert.assertTrue(navigation1.isDisplayed(), "Link Navigation không hiển thị");
         Assert.assertTrue(navigation2.isDisplayed(), "Link Navigation không hiển thị");
@@ -222,8 +226,8 @@ public class DetailJobPage {
 //        String imageSrc = jobImage.getAttribute("src");
 //        Assert.assertFalse(imageSrc.isEmpty(), "Image source không được để trống");
     }
-
-//    ****Job Detail****
+//  *****
+//  *****Methods - Job Detail*****
     public void verifyJobDetail(){
         Assert.assertTrue(jobTitle.isDisplayed(), "Job title không được hiển thị");
         Assert.assertTrue(jobDescriptionTitle.isDisplayed(), "Job Description title không được hiển thị");
@@ -252,7 +256,8 @@ public class DetailJobPage {
         System.out.println("Final transform after mouse leave: " + finalTransform);
     }
 
-    //    ****About The Seller****
+//  *****
+//  *****Methods - About The Seller*****
     public void verifyAvatarDisplay(){
         String getSellerAvatarSrc = sellerAvatarImg.getAttribute("src");
         String getSellerAvatarAlt = sellerAvatarImg.getAttribute("alt");
@@ -280,7 +285,8 @@ public class DetailJobPage {
                 "Contact Modal should be visible");
     }
 
-    //    ****Package****
+//  *****
+//  *****Methods - Package*****
     public void clickTabBasic(){
         Assert.assertTrue(tabBasic.isDisplayed(),
                 "Tab Basic should be visible");
@@ -360,8 +366,8 @@ public class DetailJobPage {
         Assert.assertTrue(driver.getCurrentUrl().contains("compare"),
                 "FAIL. Vẫn ở trang Job Detail");
     }
-
-    //    ****FAQ****
+//  *****
+//  *****Methods - FAQ*****
     public void FAQ() {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", faqSection);
     }
@@ -403,8 +409,8 @@ public class DetailJobPage {
         Assert.assertTrue(getArrowTransform.contains("90"),
                 "Mũi tên ban đầu phải ở trạng thái hướng xuống");
     }
-
-    //    ****Search****
+//  *****
+//  *****Methods - Search*****
     public void verifyTextboxSearchPlaceholder() {
         String placeholder = textboxSearch.getAttribute("placeholder");
         Assert.assertNotNull(placeholder, "Search box should have a placeholder");
@@ -506,7 +512,9 @@ public class DetailJobPage {
         Assert.assertTrue(reviewCount > 0,
                 "All reviews should be displayed when search is empty");
     }
-    //    ****Comment List****
+
+//  *****
+//  ****Methods - Comment List****
     public void verifyCommentListDisplay(){
         Assert.assertTrue(commentItem.size() > 0,
                 "Không có comment nào hiển thị!");
@@ -530,14 +538,28 @@ public class DetailJobPage {
                 "Nội dung message không đúng!");
     }
 
-    //    ****Comment****
-    //div[@class='FAQ mt-5']//li[1]//*[name()='svg']
-    public void isTextareaEmpty() {
+//  *****
+//  *****Methods - Comment*****
+    public void textareaDefaultValue() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'end'});", commentButton);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(commentButton));
+        Assert.assertTrue(commentTitle.isDisplayed(),
+                "Comment Textarea Title should be visible");
+        Assert.assertFalse(ratingStars.isEmpty(),
+                "Rating stars should exist");
+        Assert.assertTrue(commentButton.isDisplayed(),
+                "Comment Button should be visible");
         String value = commentTextarea.getAttribute("value");
-        Assert.assertTrue(value == null || value.trim().isEmpty(), "Default value của textbox không đúng. Actual" + value);
+        Assert.assertTrue(value == null || value.trim().isEmpty(),
+                "Default value of the textarea is not correct. Actual: " + value);
     }
 
-    public void inputComment(String comment) {
+    public void inputComment(String comment) throws InterruptedException {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'end'});", commentTextarea);
+        Thread.sleep(5000);
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait.until(ExpectedConditions.visibilityOf(commentTextarea));
         commentTextarea.sendKeys(comment);
     }
 
@@ -588,14 +610,14 @@ public class DetailJobPage {
     }
 
     public void verifyCommentFailBecauseNotLoggedIn(){
-//        commentTextarea.sendKeys(comment);
-//        commentButton.click();
         Assert.assertTrue(driver.getCurrentUrl().contains("login"), "FAIL. Vẫn ở trang Detail Job");
     }
 
     public void verifyTextareaRequired(){
-        String requiredAttr = commentTextarea.getAttribute("required");
-        Assert.assertNotNull(requiredAttr, "Textarea phai co thuoc tinh required");
+//        String requiredAttr = commentTextarea.getAttribute("required");
+//        Assert.assertNotNull(requiredAttr, "Textarea phai co thuoc tinh required");
+        String validationMessage = (String)((JavascriptExecutor) driver).executeScript("return arguments[0].validationMessage;", commentTextarea);
+        Assert.assertEquals(validationMessage, "Vui lòng điền vào trường này.", "Validation message should match");
     }
 
 }

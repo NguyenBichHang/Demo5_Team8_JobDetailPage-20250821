@@ -8,11 +8,11 @@ public class CommentTestLoggedIn extends LoggedInBaseTest{
     @Test
     public void testDefaultValue() {
         DetailJobPage detailJobPage = new DetailJobPage(driver);
-        detailJobPage.isTextareaEmpty();
+        detailJobPage.textareaDefaultValue();
     }
 
     @Test
-    public void testCommentSuccess() {
+    public void testCommentSuccess() throws InterruptedException {
         DetailJobPage detailJobPage = new DetailJobPage(driver);
         detailJobPage.inputComment("hangtest");
     }
