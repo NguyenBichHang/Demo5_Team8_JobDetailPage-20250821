@@ -1,13 +1,14 @@
-package Scripts.CommentTest;
+package Scripts.DetailJobTest;
 
+import Listener.ExtentReportListener;
 import Listener.SimpleListener;
 import Pages.DetailJobPage;
 import Scripts.BaseTest.NotLoggedInBaseTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(SimpleListener.class)
-public class CommentTest extends NotLoggedInBaseTest {
+@Listeners({SimpleListener.class, ExtentReportListener.class})
+public class DetailJobPageTest extends NotLoggedInBaseTest {
     //    Test Job Detail Display
     public void testJobDetailDisplay() {
         DetailJobPage detailJobPage = new DetailJobPage(driver);

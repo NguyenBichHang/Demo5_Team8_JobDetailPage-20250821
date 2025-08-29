@@ -1,10 +1,14 @@
 package Scripts.ProfileTest;
 
+import Listener.ExtentReportListener;
+import Listener.SimpleListener;
 import Pages.DetailJobPage;
 import Pages.ProfilePage;
 import Scripts.BaseTest.LoggedInBaseTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners({SimpleListener.class, ExtentReportListener.class})
 public class ProfileTest extends LoggedInBaseTest {
 
     @Test (priority = 1, description = "Check If Job List Is Empty or Not")
@@ -18,6 +22,7 @@ public class ProfileTest extends LoggedInBaseTest {
     public void testJobDisplay() {
         ProfilePage profilePage = new ProfilePage(driver);
         DetailJobPage detailJobPage = new DetailJobPage(driver);
+//        Thực thi xử lý thuê Job trong trường hợp Job chưa được thuê
         detailJobPage.clickTabBasic();
         detailJobPage.clickContinueButton();
         driver.navigate().to("https://demo5.cybersoft.edu.vn/profile");
@@ -30,10 +35,11 @@ public class ProfileTest extends LoggedInBaseTest {
     public void testViewDetailButton() {
         DetailJobPage detailJobPage = new DetailJobPage(driver);
         ProfilePage profilePage = new ProfilePage(driver);
+//        Thực thi xử lý thuê Job trong trường hợp Job chưa được thuê
 //        detailJobPage.clickTabBasic();
 //        detailJobPage.clickContinueButton();
         driver.navigate().to("https://demo5.cybersoft.edu.vn/profile");
-//        Logs.log.info("Da truy cap trang Profile");
+        Logs.log.info("Da truy cap trang Profile");
         profilePage.verifyViewDetailButton();
     }
 
@@ -41,6 +47,7 @@ public class ProfileTest extends LoggedInBaseTest {
     public void testDelButton() {
         DetailJobPage detailJobPage = new DetailJobPage(driver);
         ProfilePage profilePage = new ProfilePage(driver);
+//        Thực thi xử lý thuê Job trong trường hợp Job chưa được thuê
 //        detailJobPage.clickTabBasic();
 //        detailJobPage.clickContinueButton();
         driver.navigate().to("https://demo5.cybersoft.edu.vn/profile");
@@ -52,6 +59,7 @@ public class ProfileTest extends LoggedInBaseTest {
     public void testAlertAutoClose() {
         ProfilePage profilePage = new ProfilePage(driver);
         DetailJobPage detailJobPage = new DetailJobPage(driver);
+//        Thực thi xử lý thuê Job trong trường hợp Job chưa được thuê
 //        detailJobPage.clickTabBasic();
 //        detailJobPage.clickContinueButton();
         driver.navigate().to("https://demo5.cybersoft.edu.vn/profile");
@@ -63,6 +71,7 @@ public class ProfileTest extends LoggedInBaseTest {
     public void testAlertCloseButton() {
         ProfilePage profilePage = new ProfilePage(driver);
         DetailJobPage detailJobPage = new DetailJobPage(driver);
+//        Thực thi xử lý thuê Job trong trường hợp Job chưa được thuê
 //        detailJobPage.clickTabBasic();
 //        detailJobPage.clickContinueButton();
         driver.navigate().to("https://demo5.cybersoft.edu.vn/profile");
@@ -74,6 +83,7 @@ public class ProfileTest extends LoggedInBaseTest {
     public void testAlertDisplayWhenClicking() {
         ProfilePage profilePage = new ProfilePage(driver);
         DetailJobPage detailJobPage = new DetailJobPage(driver);
+//        Thực thi xử lý thuê Job trong trường hợp Job chưa được thuê
 //        detailJobPage.clickTabBasic();
 //        detailJobPage.clickContinueButton();
         driver.navigate().to("https://demo5.cybersoft.edu.vn/profile");
@@ -85,6 +95,7 @@ public class ProfileTest extends LoggedInBaseTest {
     public void testHoverAlert() throws InterruptedException {
         ProfilePage profilePage = new ProfilePage(driver);
         DetailJobPage detailJobPage = new DetailJobPage(driver);
+//        Thực thi xử lý thuê Job trong trường hợp Job chưa được thuê
 //        detailJobPage.clickTabBasic();
 //        detailJobPage.clickContinueButton();
         driver.navigate().to("https://demo5.cybersoft.edu.vn/profile");
@@ -96,6 +107,7 @@ public class ProfileTest extends LoggedInBaseTest {
     public void testMoveOutAlert() {
         ProfilePage profilePage = new ProfilePage(driver);
         DetailJobPage detailJobPage = new DetailJobPage(driver);
+//        Thực thi xử lý thuê Job trong trường hợp Job chưa được thuê
 //        detailJobPage.clickTabBasic();
 //        detailJobPage.clickContinueButton();
         driver.navigate().to("https://demo5.cybersoft.edu.vn/profile");

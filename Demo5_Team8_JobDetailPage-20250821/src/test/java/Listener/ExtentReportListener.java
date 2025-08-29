@@ -1,6 +1,7 @@
 package Listener;
 
-import Scripts.BaseTest.BaseTest;
+import Scripts.BaseTest.LoggedInBaseTest;
+import Scripts.BaseTest.NotLoggedInBaseTest;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -43,7 +44,8 @@ public class ExtentReportListener implements ITestListener {
 //        test.get().addScreenCaptureFromPath(screenshotPath);
         try {
             Object currentClass = result.getInstance();
-            WebDriver driver = ((BaseTest) currentClass).getDriver();
+            WebDriver driver = ((LoggedInBaseTest) currentClass).getDriver();
+
 //      Dùng Base64 thay vì file path
             String base64Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
             String customName = "Error_Screenshot_" + result.getMethod().getMethodName();

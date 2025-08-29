@@ -107,7 +107,7 @@ public class ProfilePage {
         Assert.assertTrue(viewDetailButton.isDisplayed(),
                 "View detail button should be visible");
         viewDetailButton.click();
-        Assert.assertTrue(driver.getCurrentUrl().contains("jobDetail/5"), "FAIL. Vẫn ở trang Profile");
+        Assert.assertTrue(driver.getCurrentUrl().contains("jobDetail/14"), "FAIL. Vẫn ở trang Profile");
     }
 
     public void clickDelButton(){

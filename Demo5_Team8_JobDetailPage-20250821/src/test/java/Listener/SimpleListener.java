@@ -1,6 +1,6 @@
 package Listener;
 
-import Scripts.BaseTest.BaseTest;
+import Scripts.BaseTest.LoggedInBaseTest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -27,7 +27,7 @@ public class SimpleListener implements ITestListener {
         System.out.println("Screenshot captured for test case: " + result.getName());
 
         Object currentClass = result.getInstance();
-        WebDriver driver = ((BaseTest) currentClass).getDriver();
+        WebDriver driver = ((LoggedInBaseTest) currentClass).getDriver();
 
         File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
